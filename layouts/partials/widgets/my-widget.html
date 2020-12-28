@@ -1,6 +1,16 @@
 {{ $page := .root }}
 {{ $section := .page }}
+{{ $autolink := default true $st.Params.content.autolink }}
+{{ $data := site.Params }}
 
-<h2>{{$section.Title}}</h2>
-
-<p>{{$section.Content}}</p>
+  {{ if and site.Params.map.engine $data.coordinates.latitude }}
+  <div class="d-none">
+    <input id="map-provider" value="{{ site.Params.map.engine }}">
+    <input id="map-lat" value="{{ $data.coordinates.latitude }}">
+    <input id="map-lng" value="{{ $data.coordinates.longitude }}">
+    <input id="map-dir" value="{{ $addr_formatted }}">
+    <input id="map-zoom" value="{{ site.Params.map.zoom | default "15" }}">
+    <input id="map-api-key" value="{{ site.Params.map.api_key }}">
+  </div>
+  <div id="map"></div>
+  {{ end }}
