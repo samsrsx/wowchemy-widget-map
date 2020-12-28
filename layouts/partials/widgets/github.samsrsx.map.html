@@ -1,6 +1,5 @@
 {{ $page := .root }}
 {{ $section := .page }}
-{{ $autolink := default true $st.Params.content.autolink }}
 {{ $data := site.Params }}
 
   {{ if and site.Params.map.engine $data.coordinates.latitude }}
